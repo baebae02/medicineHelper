@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API TEST: Hospital</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463&libraries=services"
+    ></script>
+  </head>
+  <body>
+    <div class="hospitalContainer">
+      <h2>병원 API</h2>
+      <div id="location">
+        <h3>1. 현재 나의 위치</h3>
+        <button id="find-location">현재 위치 찾기</button>
+        <p id="status" style="color: red"></p>
+        <div>
+          위도(latitude):
+          <span id="latitude"></span>
+        </div>
+        <div>
+          경도(longitude):
+          <span id="longitude"></span>
+        </div>
+      </div>
+
+      <div id="hospital">
+        <h3>2. 병원 찾기</h3>
+        <p>
+          <button id="find-hospital">근처 병원 찾기</button>
+        </p>
+        <ol id="hospital-list"></ol>
+        <h4>지도로 보기</h4>
+        <div id="hospital-map" style="max-width: 500px; height: 400px"></div>
+      </div>
+    </div>
+
+    <script src="./findLocation.js"></script>
+    <script src="./findHospital.js" type="module"></script>
+  </body>
+</html>

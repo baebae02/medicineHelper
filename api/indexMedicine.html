@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Test: Medicine</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h2>약 API</h2>
+    <div id="symptom">두통</div>
+    <button id="find-medicine">약 조회</button>
+
+    <form id="submit-form">
+      <input
+        type="text"
+        name="symptom"
+        id="symptomInput"
+        placeholder="증상을 입력하세요"
+      />
+      <button type="submit" id="submit-test">검색</button>
+    </form>
+
+    <script src="./findMedicine.js" type="module"></script>
+  </body>
+</html>

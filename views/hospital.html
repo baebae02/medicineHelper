@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="hospital.css" rel="stylesheet"/>
+    <script type="text/javascript" src="./script.js"></script>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463&libraries=services"
+    ></script>
+</head>
+<body>
+  <div class="container">
+    <div class="topBar">
+      <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+      <nav class="navBar">
+        <a id="hospital" onclick="goHospital()">병원</a>
+        <a id="pharmacy" onclick="goPharmacy()">약국</a>
+        <a id="medicine" onclick="goMedicine()">약</a>
+        <a id="store" onclick="goRecord()">기록</a>
+      </nav>
+    </div>
+    <div class="hospitalContainer">
+      <div class="where">
+        <h2>❓현재 위치를 알려주세요!</h2>
+        <div id="location">
+          <button id="find-location">현재 위치 찾기</button>
+          <p id="status"></p>
+          <p>여기가 맞나요? </p>
+          <div class="btn">
+            <div>
+              위도(latitude):
+              <span id="latitude"></span>
+            </div>
+            <div>
+              경도(longitude):
+              <span id="longitude"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="hospital">
+          <h2>🏥근처 병원을 찾아보세요!</h2>
+          <button id="find-hospital">근처 병원 찾기</button>
+          <ol id="hospital-list"></ol>
+        </div>
+      </div>
+      <div id="hospital-map" style="max-width: 500px; height: 400px"></div>
+    <button id="create-kakao-link-btn">
+      <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+    </button>
+  </div>
+    <script src="../api/findLocation.js"></script>
+    <script src="../api/findHospital.js" type="module"></script>
+    <script src="../api/kakaosend.js"></script>
+</body>
+</html> 
+<script src="https://developers.kakao.com/sdk/js/kakao.js">
+  
+</script>
+<!-- <script type="text/javascript">
+    const data = JSON.parse(localStorage.getItem('data'));
+    Kakao.init('dc33ffce9ab578d749e87ddd4d7c0843')
+    Kakao.Link.createDefaultButton({
+      container: '#create-kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: data.body.items[0].itemName,
+        description: '#약 #증상 #병원 #아프지마',
+        imageUrl: 'https://w.namu.la/s/0a01908507d9c9f1fe8fc4a1d2baf0fe39ca60f4655c9a627c53767c296cd9b0ac4dcbf195eca2c2b464a0e9241e2da814a4036ab53b461e080ae321a153c598dcc0a043fae0d59bfafcf79210033f13',
+        link: {
+          mobileWebUrl: 'https://developers.kakao.com',
+          webUrl: 'https://developers.kakao.com',
+        },
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+      ],
+    })
+
+</script> -->

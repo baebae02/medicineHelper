@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/javascript" src="./script.js"></script>
+    <title>Test3</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <div class="intro">
+        <img src="../assets/intro.png" width="50%"/>
+      </div> -->
+      <div class="topBar">
+        <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+        <nav class="navBar">
+          <a id="hospital" onclick="goHospital()">병원</a>
+          <a id="pharmacy" onclick="goPharmacy()">약국</a>
+          <a id="medicine" onclick="goMedicine()">약</a>
+          <a id="store" onclick="goRecord()">기록</a>
+        </nav>
+      </div>
+      <h1 id="text">💊 모두를  위한 사이트 </h1>
+      <p style="font-size: 25px;" id="text">약에 대한 모든 것을 모았습니다.</p>
+      <div class="section">
+        <input type="radio" name="slide" id="slide01" checked>
+        <input type="radio" name="slide" id="slide02">
+        <input type="radio" name="slide" id="slide03">
+    
+        <div class="slidewrap">
+          <ul class="slidelist">
+            <li>
+              <a>
+                <label for="slide03" class="left"></label>
+                <img src="../assets/slide1.png" width="80%;">
+                <label for="slide02" class="right"></label>
+              </a>
+            </li>
+            <li>
+              <a>
+                <label for="slide01" class="left"></label>
+                <img src="../assets/bg.png">
+                <label for="slide03" class="right"></label>
+              </a>
+            </li>
+            <li>
+              <a>
+                <label for="slide02" class="left"></label>
+                <img src="../assets/bg.png">
+                <label for="slide01" class="right"></label>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <div class="text">
+          <p style="font-size: 30px; font-weight: bold">
+            알고 먹으면 약, 모르고 먹으면 독
+          </p>
+          <p>약은 성분에 따라 치료를 하기도, 부작용을 일으키도 합니다. 복용중인 약의 성분이 궁금하지 않나요? <br>
+            약 검색 기능을 통해 복용 중인 약의 성분을 확인해보세요. <br>
+            부작용은 어떤 것이 있는지, 효능은 무엇인지도 알 수 있습니다. </p>
+            <img src="../assets/searchMedicine.png" width="80%;">
+            <br><br><br>
+        </div>
+      </div>
+      <div class="content">
+        <div class="text">
+          <p style="font-size: 30px; font-weight: bold">
+            주변 병원이 궁금한가요? 
+          </p>
+          <p>코로나로 병원 갈 일이 많아진 요즘, 빠르게 주변 병원을 찾고 싶다면 클릭해보세요.<br>
+          병원을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다. <br>
+          여러분의 위치에서 가장 가까운 병원 5곳을 알려드려요! </p>
+            <br><br><br>
+        </div>
+        <div class="content">
+          <div class="text">
+            <p style="font-size: 30px; font-weight: bold">
+              주변 약국이 궁금한가요? 
+            </p>
+            <p>병원을 가기보단 약국가서 빠르게 처방받고 싶으시다면 여기를 클릭해보세요.<br>
+            마찬가지로, 약국을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다. <br>
+            여러분의 위치에서 가장 가까운 약국 5곳을 알려드려요! </p>
+              <br><br><br>
+         </div>
+         <div class="content">
+          <div class="text">
+            <p style="font-size: 30px; font-weight: bold">
+             약 먹는 것을 자주 깜빡하시나요? 
+            </p>
+            <p>하루 3번 꼬박꼬박 약을 먹는 것은 쉬운일이 아닙니다. <br>
+            현재 복용중인 약을 적고 알람을 등록하시면, 정해진 시간에 알람을 카톡으로 보내드려요!<br>
+           저희와 함께라면 완치는 식은 죽 먹기 ! </p>
+              <br><br><br>
+         </div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="topBar">
+          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+          <nav class="navBar">
+            <a id="hospital" onclick="goHospital()">병원</a>
+            <a id="pharmacy" onclick="goPharmacy()">약국</a>
+            <a id="medicine" onclick="goMedicine()">약</a>
+            <a id="store" onclick="goRecord()">기록</a>
+          </nav>
+        </div>
+        <h1 style="align-self: center;">궁금한 약이 있으신가요? 검색해보세요!</h1>
+        <div class="searchBox">
+            <form action="test.php" method="GET">
+            <img src="assets/image/search.png" alt="">
+            <input class="input" type="text" name="searchTerm" placeholder="약 이름을 입력해주세요!">
+            <input class="searchButton" type="submit" value="검색🔎">
+            </form>
+        </div>
+        <!-- 검색 버튼 -->
+    </div>
+    <img class="bg" src="../assets/medicinebg2.jpeg"/>
+    <script type="text/javascript" src="./script.js"></script> 
+</body>
+</html>
+<style>
+
+.searchBox{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex: column;
+    margin: 10px;
+}
+.searchBox .input {
+    width: 800px;
+    border-radius: 15px;
+    padding: 15px;
+    border: none;
+    box-shadow: 3px 3px 3px 3px #e7e7e7;
+}
+.searchBox :hover {
+    animation: updown 1s infinite;
+}
+
+.searchButton {
+    border: none;
+    box-shadow: 3px 3px 3px 3px #e7e7e7;
+    margin: 12px;
+    padding: 12px;
+    border-radius: 15px;
+}
+.bg {
+    position: fixed;
+    width: 100%;
+    top: 130px;
+    z-index: -1;
+    opacity: 0.8;
+}
+@keyframes updown{
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+</style>

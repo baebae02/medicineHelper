@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+    <link href="style.css" rel="stylesheet"/>
+	<title>Medicine</title>
+</head>
+<body>
+    <div class="container">
+        <div class="topBar">
+          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+          <nav class="navBar">
+            <a id="hospital" onclick="goHospital()">병원</a>
+            <a id="pharmacy" onclick="goPharmacy()">약국</a>
+            <a id="medicine" onclick="goMedicine()">약</a>
+            <a id="store" onclick="goRecord()">기록</a>
+          </nav>
+        </div>
+    </div>
+    <div id="map" style="width:500px;height:400px;"></div>
+    <a id="create-kakao-link-btn" href="javascript:;">
+        <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+    </a>
+    <button id="find-hospital">근처 병원 찾기</button>
+</body>
+<script type="text/javascript" src="./script.js"></script> 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+<script>
+    // 지도 만들기 
+    var container = document.getElementById('map');
+    var options = {
+        center: new kakao.maps.LatLng(35.450701, 126.570667),
+        level: 3
+    };
+
+    var map = new kakao.maps.Map(container, options);
+    var gps_use = null; //gps의 사용가능 여부
+    var gps_lat = null; // 위도
+    var gps_lng = null; // 경도
+    var gps_position; // gps 위치 객체
+
+    gps_check();
+    // gps가 이용가능한지 체크하는 함수이며, 이용가능하다면 show location 함수를 불러온다.
+    // 만약 작동되지 않는다면 경고창을 띄우고, 에러가 있다면 errorHandler 함수를 불러온다.
+    // timeout을 통해 시간제한을 둔다.
+    function gps_check(){
+        if (navigator.geolocation) {
+            var options = {timeout:60000};
+            navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+        } else {
+            alert("GPS_추적이 불가합니다.");
+            gps_use = false;
+        }
+    }
+
+
+    // gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
+    function showLocation(position) {
+        console.log("I'mhere");
+        gps_use = true;
+        gps_lat = position.coords.latitude;
+        gps_lng = position.coords.longitude;
+        
+        markerPosition = new kakao.maps.LatLng(gps_lat, gps_lng);
+        var marker = new kakao.maps.Marker({
+            position: markerPosition,
+        });
+        map.setCenter(markerPosition);
+        marker.setMap(map);
+        console.log(gps_lat, gps_lng);
+    }
+
+
+    // error발생 시 에러의 종류를 알려주는 함수.
+    function errorHandler(error) {
+        if(error.code == 1) {
+            alert("접근차단");
+        } else if( err.code == 2) {
+            alert("위치를 반환할 수 없습니다.");
+        }
+        gps_use = false;
+    } 
+    function shareKakao(name, addr) {
+        //카카오 링크 공유하기 
+        var hospital =localStorage.getItem('data');
+        console.log(hospital);
+        Kakao.init('8be14ebb15975289754d69e11dec6463');
+        Kakao.Link.createDefaultButton({
+        container: '#create-kakao-link-btn',
+        objectType: 'location',
+        address: addr,
+        addressTitle: '카카오 판교오피스 카페톡',
+        content: {
+          title: name,
+          description: '병원가세용!',
+          imageUrl:
+            'http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png',
+          link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+          },
+        },
+        social: {
+          likeCount: 286,
+          commentCount: 45,
+          sharedCount: 845,
+        },
+        buttons: [
+          {
+            title: '웹으로 보기',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com',
+            },
+          },
+        ],
+      })
+    }
+    //현재 위치 기준으로 근처 병원 이름, 주소 보여주기
+    function findHospital(){
+        const API_KEY =
+            "Ta6sT%2BivsJ1PVZrsEg4KJQ1A35VgZcgnO1lMFHw0YueFyfqn6Gi0Csllevy1veAryofhGi2SPe1Tp0H4IVvccg%3D%3D";
+    
+        var hospitalAddr = [];
+        var hospitalName = [];
+        var hospitalLatLng = {};
+        const numberOfResult = 5;
+
+        //병원api
+        const url = `https://cors-anywhere.herokuapp.com/http://apis.data.go.kr/B551182/hospInfoService1/getHospBasisList1?ServiceKey=${API_KEY}&numOfRows=${numberOfResult}&xPos=${gps_lng}&yPos=${gps_lat}&radius=3000`;
+    
+        fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+            const parser = new DOMParser();
+            const result = parser.parseFromString(data, "text/html");
+    
+            //배열에 병원의 위치와 주소 저장하기
+            for (var i = 0; i < numberOfResult; i++) {
+            hospitalAddr.push(
+                result.getElementsByTagName("addr")[i].childNodes[0].nodeValue,
+                console.log(hospitalAddr)
+            );
+            hospitalName.push(
+                result.getElementsByTagName("yadmnm")[i].childNodes[0]
+                .nodeValue
+            );
+            }
+            //첫번째 병원의 위치 출력
+            console.log(hospitalName[0]);
+            console.log(hospitalAddr[0]);
+            shareKakao(hospitalName[0], hospitalAddr[0]);
+        });
+
+    }
+    
+  document
+        .querySelector("#find-hospital")
+        .addEventListener("click", findHospital);
+</script>
+</html>
+

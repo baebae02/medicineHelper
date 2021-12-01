@@ -1,39 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-* {font-family:  sans-serif;  }
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+* {
+  font-family: sans-serif;
+}
 
-.topBar {display: flex; justify-content: center; padding: 20px; font-family: 'Noto Sans KR', sans-serif; text-align: center; align-items: center; margin-bottom: 100px; } 
-.navBar a {padding: 0 20px; font-size: 20px;}
+.topBar {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.navBar a {
+  padding: 0 20px;
+  font-size: 20px;
+}
 
-.container {display: flex; flex-direction: column; justify-content: center; padding: 40px; margin: 0 auto;}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  margin: 0 auto;
+}
 
-.content { width: 100%; text-align: center; margin-top: 100px;}
-.content p {margin: 10px;}
+#map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-#find-location {border:none; border-radius: 15px; width: 100px; padding: 10px; }
-#find-hospital {border:none; border-radius: 15px; width: 100px; padding: 10px; }
+#find-hospital {
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  padding: 10px;
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+}
+.content p {
+  margin: 10px;
+}
+
+#find-location {
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  padding: 10px;
+}
+
 .hospitalContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .where {
-    width: 1000px;
-    margin: 20px auto;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 3px 3px 3px 3px #e7e7e7;
+  width: 1000px;
+  margin: 20px auto;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 3px 3px 3px 3px #e7e7e7;
 }
 .btn {
-    display: flex;
-    border-radius: 15px;
+  display: flex;
+  border-radius: 15px;
 }
 
 .hospital {
-    margin-top: 20px;
-    height: auto;
+  margin-top: 20px;
+  height: auto;
 }

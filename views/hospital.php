@@ -38,6 +38,7 @@
         curl_close ($ch);
         if($status_code == 200) { //정상
             echo $status_code;
+            echo $page;
         }
         
         else {
@@ -50,6 +51,7 @@
         for($i=0; $i<10; $i++){
             $info = $items[$i];
             sendQuery($info);
+            echo($info->entpName);
         }
         $page++;
     }
@@ -65,11 +67,11 @@
         // Make database the current database
         $db_medicine= mysqli_select_db($connect, 'medicine');
         if(!$db_medicine) {
-            $create_db_query = "CREATE DATABASE newsinformation";
+            $create_db_query = "CREATE DATABASE medicine";
             if(mysqli_query($connect, $create_db_query)) {
-                echo "Success to Create Databases :: newsinformation<br>";
+                echo "Success to Create Databases :: medicine<br>";
             } else {
-                echo "Failed to Create Databases :: newsinformation<br>";
+                echo "Failed to Create Databases :: medicine<br>";
                 return;
             }
         }
@@ -134,7 +136,7 @@
         }
     
         //query 날리기
-        $insert_query = "INSERT IGNORE INTO hospital (yadmNm, clCd, clCdNm, sidoCd, sidoCdNm, sgguCd, sgguCdNm, emdongNm,postNo, addr, telno,
+        $insert_query = "INSERT INTO hospital (yadmNm, clCd, clCdNm, sidoCd, sidoCdNm, sgguCd, sgguCdNm, emdongNm,postNo, addr, telno,
         hospUrl,drTotCnt,mdeptGdrCnt,mdeptSdrCnt,detyGdrCnt,detySdrCnt,cmdcGdrCnt,cmdcSdrCnt,XPos,YPos,distance)";
         $insert_query = $insert_query . "VALUES ('" 
                                 .$info->yadmNm."','".$info->clCd."','". $info->clCdNm ."','". $info->sidoCd."','".

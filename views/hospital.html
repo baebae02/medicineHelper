@@ -1,103 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="hospital.css" rel="stylesheet"/>
-    <script type="text/javascript" src="./script.js"></script>
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463&libraries=services"
-    ></script>
-</head>
-<body>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <link href="hospital.css" rel="stylesheet"/>
   <div class="container">
-    <div class="topBar">
-      <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
-      <nav class="navBar">
-        <a id="hospital" onclick="goHospital()">병원</a>
-        <a id="pharmacy" onclick="goPharmacy()">약국</a>
-        <a id="medicine" onclick="goMedicine()">약</a>
-        <a id="store" onclick="goRecord()">기록</a>
-      </nav>
-    </div>
-    <div class="hospitalContainer">
-      <div class="where">
-        <h2>❓현재 위치를 알려주세요!</h2>
-        <div id="location">
-          <button id="find-location">현재 위치 찾기</button>
-          <p id="status"></p>
-          <p>여기가 맞나요? </p>
-          <div class="btn">
-            <div>
-              위도(latitude):
-              <span id="latitude"></span>
-            </div>
-            <div>
-              경도(longitude):
-              <span id="longitude"></span>
-            </div>
-          </div>
-        </div>
+      <div class="topBar">
+          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+          <nav class="navBar">
+              <a id="hospital" onclick="goHospital()">병원</a>
+              <a id="pharmacy" onclick="goPharmacy()">약국</a>
+              <a id="medicine" onclick="goMedicine()">약</a>
+              <a id="store" onclick="goRecord()">기록</a>
+          </nav>
       </div>
-      <div id="hospital">
-          <h2>🏥근처 병원을 찾아보세요!</h2>
-          <button id="find-hospital">근처 병원 찾기</button>
-          <ol id="hospital-list"></ol>
-        </div>
+      <h2 style="align-self: center;">근처 병원을 찾아볼까요?</h2>
+      <div class="btn" onclick="ChangeImg()">
+        <img id="find-hospital" src="../assets/buttonUp.png">
       </div>
-      <div id="hospital-map" style="max-width: 500px; height: 400px"></div>
-    <button id="create-kakao-link-btn">
-      <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-    </button>
+      <div class="where" id="map-container">
+          <br>
+          <p id="map-title">🏥 현재 위치를 알려주세요!</p>
+          <div id="hospital-map" style="width: 500px; height: 400px"></div>
+      </div>
   </div>
-    <script src="../api/findLocation.js"></script>
-    <script src="../api/findHospital.js" type="module"></script>
-    <script src="../api/kakaosend.js"></script>
-</body>
-</html> 
-<script src="https://developers.kakao.com/sdk/js/kakao.js">
-  
-</script>
-<!-- <script type="text/javascript">
-    const data = JSON.parse(localStorage.getItem('data'));
-    Kakao.init('dc33ffce9ab578d749e87ddd4d7c0843')
-    Kakao.Link.createDefaultButton({
-      container: '#create-kakao-link-btn',
-      objectType: 'feed',
-      content: {
-        title: data.body.items[0].itemName,
-        description: '#약 #증상 #병원 #아프지마',
-        imageUrl: 'https://w.namu.la/s/0a01908507d9c9f1fe8fc4a1d2baf0fe39ca60f4655c9a627c53767c296cd9b0ac4dcbf195eca2c2b464a0e9241e2da814a4036ab53b461e080ae321a153c598dcc0a043fae0d59bfafcf79210033f13',
-        link: {
-          mobileWebUrl: 'https://developers.kakao.com',
-          webUrl: 'https://developers.kakao.com',
-        },
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845,
-      },
-      buttons: [
-        {
-          title: '웹으로 보기',
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
-          },
-        },
-        {
-          title: '앱으로 보기',
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
-          },
-        },
-      ],
-    })
+<script type="text/javascript" src="./script.js"></script> 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+<script>
+  function findHospital() {
+    const HOSPITAL_API_KEY =
+        "Ta6sT%2BivsJ1PVZrsEg4KJQ1A35VgZcgnO1lMFHw0YueFyfqn6Gi0Csllevy1veAryofhGi2SPe1Tp0H4IVvccg%3D%3D";
 
-</script> -->
+    const latitude = localStorage.getItem("posX");
+    const longitude = localStorage.getItem("posY");
+    const hospitalNumber = 5;
+    const radius = 2000;
+    const hospitalList = [];
+
+    if (latitude == "" || longitude == "") {
+        alert("먼저 현재 위치를 찾으세요!");
+        return;
+    }
+
+    $.ajax({
+      url: `http://apis.data.go.kr/B551182/hospInfoService1/getHospBasisList1?ServiceKey=${HOSPITAL_API_KEY}&numOfRows=${hospitalNumber}&xPos=${longitude}&yPos=${latitude}&radius=${radius}`,
+      type: "GET",
+      dataType: "json",
+      success: function (data) {
+        console.log("Ajax 요청 성공");
+
+        //병원 5개 찾기
+        for (let i = 0; i < hospitalNumber; i++) {
+          const hospitalName = data.response.body.items.item[i].yadmNm;
+          const hospitalAddr = data.response.body.items.item[i].addr;
+          const hospitalLng = data.response.body.items.item[i].XPos;
+          const hospitalLat = data.response.body.items.item[i].YPos;
+
+          //hospitalList에 병원 추가
+          const tmp = {};
+          tmp.name = hospitalName;
+          tmp.addr = hospitalAddr;
+          tmp.longitude = hospitalLng;
+          tmp.latitude = hospitalLat;
+          hospitalList[i] = tmp;
+        }
+        console.log(hospitalList);
+
+        //지도에 병원 5개 표시
+        var mapContainer = document.getElementById("hospital-map");
+        var mapOptions = {
+            center: new kakao.maps.LatLng(latitude, longitude),
+            level: 6,
+        };
+        var map = new kakao.maps.Map(mapContainer, mapOptions);
+        var imageSrc =
+            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+        var currentMarker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(latitude, longitude),
+            title: "현재 위치",
+        });
+        
+        document.getElementById("map-title").innerHTML = "<h3>여기가 맞나요?</h3>"
+        for (let i = 0; i < hospitalNumber; i++) {
+            var imageSize = new kakao.maps.Size(24, 35);
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+            var marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(
+                hospitalList[i].latitude,
+                hospitalList[i].longitude
+            ),
+            title: hospitalList[i].name,
+            image: markerImage,
+            });
+        }
+      },
+      error: function (request, status, error) {
+      alert("Ajax 요청 실패");
+      },
+    });
+  }
+
+  function ChangeImg(){
+    var btn =  document.getElementById("find-hospital");
+    btn.src = "../assets/buttonDown.png";
+  }
+
+  document
+  .querySelector("#find-hospital")
+  .addEventListener("click", findHospital);
+</script>
+</html>

@@ -12,7 +12,6 @@
   font-family: "Noto Sans KR", sans-serif;
   text-align: center;
   align-items: center;
-  margin-bottom: 100px;
 }
 .navBar a {
   padding: 0 20px;
@@ -39,6 +38,10 @@
   border-radius: 15px;
   width: 100px;
   padding: 10px;
+  align-self: center;
+  border: none;
+  margin: 10px;
+  transition: all 1s; 
 }
 
 .content {
@@ -63,18 +66,18 @@
   align-items: center;
   flex-direction: column;
 }
+.btn {
+  align-self: center; 
+}
 .where {
   width: 1000px;
-  margin: 20px auto;
+  margin: 0 auto;
   border-radius: 15px;
   display: flex;
   align-items: center;
   flex-direction: column;
   box-shadow: 3px 3px 3px 3px #e7e7e7;
-}
-.btn {
-  display: flex;
-  border-radius: 15px;
+  padding-bottom: 30px;
 }
 
 .hospital {

@@ -94,11 +94,11 @@ function sendQuery($info) {
     // Make database the current database
     $db_medicine= mysqli_select_db($connect, 'medicine');
     if(!$db_medicine) {
-        $create_db_query = "CREATE DATABASE newsinformation";
+        $create_db_query = "CREATE DATABASE medicine";
         if(mysqli_query($connect, $create_db_query)) {
-            echo "Success to Create Databases :: newsinformation<br>";
+            echo "Success to Create Databases :: medicine<br>";
         } else {
-            echo "Failed to Create Databases :: newsinformation<br>";
+            echo "Failed to Create Databases :: medicine<br>";
             return;
         }
     }

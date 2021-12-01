@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 40px;
   margin: 0 auto;
 }
@@ -68,6 +69,8 @@
 }
 .btn {
   align-self: center; 
+  height: 150px;
+
 }
 .where {
   width: 1000px;

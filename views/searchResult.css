@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   
+    padding: 20px;
 }
 .result {
     box-shadow: 3px 3px 3px 3px #e7e7e7;

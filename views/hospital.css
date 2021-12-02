@@ -102,3 +102,16 @@
   margin-top: 20px;
   height: auto;
 }
+
+#create-kakao-link-btn{
+  border: none;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+}
+
+.container button {
+  border: none;
+  position: fixed;
+  right: 20px;
+}

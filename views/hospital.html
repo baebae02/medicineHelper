@@ -26,12 +26,54 @@
           <p id="map-title">🏥 현재 위치를 알려주세요!</p>
           <div id="hospital-map" style="width: 500px; height: 400px"></div>
       </div>
+      <button id="create-kakao-link-btn">
+        <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+      </button>
   </div>
 <script type="text/javascript" src="./script.js"></script> 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
 <script>
+    function sendMsg(){
+        const data = JSON.parse(localStorage.getItem('data'));
+        Kakao.init('dc33ffce9ab578d749e87ddd4d7c0843')
+        Kakao.Link.createDefaultButton({
+        container: '#create-kakao-link-btn',
+        objectType: 'feed',
+        content: {
+            title: data.body.items[0].itemName,
+            description: '#약 #증상 #병원 #아프지마',
+            imageUrl: 'https://w.namu.la/s/0a01908507d9c9f1fe8fc4a1d2baf0fe39ca60f4655c9a627c53767c296cd9b0ac4dcbf195eca2c2b464a0e9241e2da814a4036ab53b461e080ae321a153c598dcc0a043fae0d59bfafcf79210033f13',
+            link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+            },
+        },
+        social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845,
+        },
+        buttons: [
+            {
+            title: '웹으로 보기',
+            link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+            },
+            },
+            {
+            title: '앱으로 보기',
+            link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+            },
+            },
+        ],
+        })
+    }
   function gps_check(){
       if (navigator.geolocation) {
           var options = {timeout:60000};
@@ -153,3 +195,32 @@
   .addEventListener("click", findHospital);
 </script>
 </html>
+
+<style>
+#create-kakao-link-btn{
+  border: none;
+  position: fixed;
+  right: 20px;
+  background-color: white;
+  animation: move 1.5s infinite;
+  animation-delay: 1s;
+}
+
+@keyframes move {
+    0%{
+        transform: translateY(0px);
+    }
+    25%{
+        transform: translateY(10px);
+    }
+    50%{
+        transform: translateY(-7px);
+    }
+    75%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+</style>

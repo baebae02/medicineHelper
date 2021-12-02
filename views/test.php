@@ -15,11 +15,11 @@
     <div class="container">
         <div class="result">
             <?php
-            $sql = "SELECT * FROM info";
+            $sql = "SELECT * FROM info WHERE itemName like '%".$searchItem."%'";
             $sql2 = "SELECT * FROM info WHERE efcyQesitm like '%".$searchItem."%' LIMIT 10";
             $result = mysqli_query($connect, $sql);
             $result2 = mysqli_query($connect, $sql2);
-            if (mysqli_num_rows($result) > 0 && mysqli_num_rows($result2) < 0) {
+            if (mysqli_num_rows($result) > 0 && mysqli_num_rows($result2) <= 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     // echo "아이디: " . $row["id"]. " 품명:" . $row["itemName"]. "<br>";
                     if ($searchItem == $row["itemName"]){

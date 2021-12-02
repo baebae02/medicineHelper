@@ -27,11 +27,15 @@
           <div id="pharamacy-map" style="width: 500px; height: 400px"></div>
           <div id="pharamacyList"></div>
       </div>
+      <button id="create-kakao-link-btn" onclick="sendMsg()">
+        <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+      </button>
   </div>
 <script type="text/javascript" src="./script.js"></script> 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+</html>
 <script>
   function gps_check(){
       if (navigator.geolocation) {
@@ -60,6 +64,7 @@
         }
         gps_use = false;
     } 
+  const pharamacyList = [];
   function findPharmacy() {
     gps_check();
     // gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
@@ -70,7 +75,6 @@
     console.log(latitude,longitude);
     const pharamacyNumber = 5;
     const radius = 2000;
-    const pharamacyList = [];
 
     if (latitude == "" || longitude == "") {
         alert("먼저 현재 위치를 찾으세요!");
@@ -153,6 +157,48 @@
     });
   }
 
+  function sendMsg(){
+        const data = pharamacyList[0];
+        alert(data);
+        // const data = JSON.parse(localStorage.getItem('data'));
+        Kakao.init('8be14ebb15975289754d69e11dec6463')
+        Kakao.Link.createDefaultButton({
+        container: '#create-kakao-link-btn',
+        objectType: 'location',
+        address: data.addr,
+        content: {
+            title: data.name,
+            description: '가장 가까운 약국입니다, 아프지마세요!',
+            imageUrl: 'https://saengmotmi.netlify.app/static/75aa5244eed6e978da437863d7061ab5/11864/070301.png',
+            link: {
+            mobileWebUrl: 'https://developers.kakao.com',
+            webUrl: 'https://developers.kakao.com',
+            },
+        },
+        social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845,
+        },
+        buttons: [
+            {
+            title: '웹으로 보기',
+            link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+            },
+            },
+            {
+            title: '앱으로 보기',
+            link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+            },
+            },
+        ],
+        })
+    }
+
   function ChangeImg(){
     var btn =  document.getElementById("find-pharamacy");
     btn.src = "../assets/buttonDown.png";
@@ -162,4 +208,34 @@
   .querySelector("#find-pharamacy")
   .addEventListener("click", findPharmacy);
 </script>
-</html>
+
+
+<style>
+
+#create-kakao-link-btn{
+  border: none;
+  position: fixed;
+  right: 20px;
+  background-color: white;
+  animation: move 1.5s infinite;
+  animation-delay: 1s;
+}
+
+@keyframes move {
+    0%{
+        transform: translateY(0px);
+    }
+    25%{
+        transform: translateY(10px);
+    }
+    50%{
+        transform: translateY(-7px);
+    }
+    75%{
+        transform: translateY(5px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+</style>

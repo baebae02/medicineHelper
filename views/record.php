@@ -50,6 +50,9 @@
                 ?>
             </div>
         </div>
+        <div>
+            <button class="add" onclick="window.open('./addRecord.php')">약 등록하기</button>
+        </div>
     </div>
     <script type="text/javascript" src="./script.js"></script> 
 </body>
@@ -100,9 +103,20 @@
         font-size: 15px;
         font-weight: bold;
     }
+
+    .add {
+        margin: 20px;
+        border: none;
+        padding: 20px;
+        border-radius: 25px;
+        font-size: 15px;
+        background-color: white;
+        box-shadow: 3px 3px 3px 3px #e7e7e7;
+    }
 </style>
 <script>
 function alert() {
    console.log("알람등록");
 }
+
 </script>

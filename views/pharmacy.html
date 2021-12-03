@@ -5,36 +5,39 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Pharamacy</title>
+      <link href="hospital.css" rel="stylesheet"/>
   </head>
-  <link href="hospital.css" rel="stylesheet"/>
-  <div class="container">
-      <div class="topBar">
-          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
-          <nav class="navBar">
-              <a id="hospital" onclick="goHospital()">병원</a>
-              <a id="pharmacy" onclick="goPharmacy()">약국</a>
-              <a id="medicine" onclick="goMedicine()">약</a>
-              <a id="store" onclick="goRecord()">기록</a>
-          </nav>
+  <body>
+      <div class="container">
+          <div class="topBar">
+              <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+              <nav class="navBar">
+                <a id="hospital" onclick="goHospital()">병원</a>
+                <a id="pharmacy" onclick="goPharmacy()">약국</a>
+                <a id="medicine" onclick="goMedicine()">약</a>
+                <a id="store" onclick="goRecord()">기록</a>
+                <a id="stock" onclick="goStock()">게임</a>
+              </nav>
+          </div>
+          <h2 style="align-self: center;">근처 약국을 찾아볼까요?</h2>
+          <div class="btn" onclick="ChangeImg()">
+            <img id="find-pharamacy" src="../assets/buttonUp.png">
+          </div>
+          <div class="where" id="map-container">
+              <br>
+              <p id="map-title">🏥 현재 위치를 알려주세요!</p>
+              <div id="pharamacy-map" style="width: 500px; height: 400px"></div>
+              <div id="pharamacyList"></div>
+          </div>
+          <button id="create-kakao-link-btn" onclick="sendMsg()">
+            <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+          </button>
       </div>
-      <h2 style="align-self: center;">근처 약국을 찾아볼까요?</h2>
-      <div class="btn" onclick="ChangeImg()">
-        <img id="find-pharamacy" src="../assets/buttonUp.png">
-      </div>
-      <div class="where" id="map-container">
-          <br>
-          <p id="map-title">🏥 현재 위치를 알려주세요!</p>
-          <div id="pharamacy-map" style="width: 500px; height: 400px"></div>
-          <div id="pharamacyList"></div>
-      </div>
-      <button id="create-kakao-link-btn" onclick="sendMsg()">
-        <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-      </button>
-  </div>
-<script type="text/javascript" src="./script.js"></script> 
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+    <script type="text/javascript" src="./script.js"></script> 
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+  </body>
 </html>
 <script>
   function gps_check(){
@@ -211,7 +214,6 @@
 
 
 <style>
-
 #create-kakao-link-btn{
   border: none;
   position: fixed;

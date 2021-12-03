@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+* {
+  font-family: sans-serif;
+}
+.logo {
+  float: left;
+}
+.topBar {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.navBar a {
+  padding: 0 20px;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+#stock-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+#buttons {
+  margin: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.hidden {
+  display: none;
+}
+
+/* #stock-container {
+  justify-content: center;
+} */
+
+#stock-title {
+  display: inline-block;
+}

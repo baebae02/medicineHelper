@@ -14,5 +14,5 @@ function goRecord() {
   location.replace("record.php");
 }
 function goStock() {
-  location.replace("stock.html");
+  location.replace("stock.php");
 }

@@ -16,12 +16,13 @@
   $stockList = $finder->query($query); /* stock 항목들*/
 
   $removeChar = array(",", "%");
-  for($i = 0; $i < count($stockList); $i++) { 
-      $all_td_tags = $finder->query('td', $stockList[$i]);
+  for($i = 0; $i < count($stockList)-2; $i++) { 
+    $all_td_tags = $finder->query('td', $stockList[$i]);
+      // print_r($all_td_tags->item(0));
       $stockName = (string)str_replace(" *", "", $all_td_tags->item(0)->nodeValue);
       $changeRatio = (float)str_replace($removeChar, "", $all_td_tags->item(3)->nodeValue);
-      $compareWithYesterday = (int)str_replace($removeChar, "", $all_td_tags->item(2)->nodeValue);
-      $nowPrice = (int)str_replace($removeChar, "", $all_td_tags->item(1)->nodeValue);
+      $compareWithYesterday = (int)str_replace($removeChar, "", $all_td_tags->item(2)->textContent);
+      $nowPrice = (int)str_replace($removeChar, "", $all_td_tags->item(1)->textContent);
 
       $stockInfo = array($stockName,$changeRatio,$compareWithYesterday,$nowPrice);
 
@@ -90,7 +91,7 @@
 
 <body>
   <div class="container">
-    <div class="topBar">
+    <div class="topBar" style="margin-bottom: 20px;">
       <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
       <nav class="navBar">
         <a id="hospital" onclick="goHospital()">병원</a>
@@ -100,15 +101,13 @@
         <a id="stock" onclick="goStock()">게임</a>
       </nav>
     </div>
+    <div class="text">
+      <h1>주식 미니 게임</h1>
+      <h3>어제에 비해 오늘 <span style="color: #cf0000;">오른</span> 주식은 무엇일까요?</h3>
+    </div>
     <div id="stock-container">
-      <div id="stock-title">
-        주식 미니 게임
-      </div>
-      <div id="stock-question">
-        어제에 비해 오늘 오른 주식 종목은 무엇일까요?
-      </div>
       <div id="stock-list">
-        <div id="stock1">
+        <div id="stock">
           <div class="hidden">
             <?php 
             echo ($mix_arr[0][1]);
@@ -120,7 +119,7 @@
             ?>
           </button>
         </div>
-        <div id="stock2">
+        <div id="stock">
           <div class="hidden">
             <?php
             echo ($mix_arr[1][0]);
@@ -132,7 +131,7 @@
             ?>
           </button>
         </div>
-        <div id="stock3">
+        <div id="stock">
           <div class="hidden">
             <?php
             echo ($mix_arr[2][0]);
@@ -144,7 +143,7 @@
             ?>
           </button>
         </div>
-        <div id="stock4">
+        <div id="stock">
           <div class="hidden">
             <?php
             echo ($mix_arr[3][0]);
@@ -172,8 +171,21 @@
 </html>
 
 <style>
+.text {
+  text-align: center;
+}
+#stock-container {
+  padding: 20px;
+  background-image: url('../assets/stock.jpeg');
+}
+#stock-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .stockBtn {
   width: 200px;
+  height: 150px;
   margin: 10px;
   display: inline-block;
   outline: 0;
@@ -186,14 +198,13 @@
   border: 1px solid;
   border-radius: 6px;
   color: #24292e;
-  background-color: #fafbfc;
-  border-color: #1b1f2326;
-  box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px,
-    rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
-  transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  transition-property: color,
-    background-color,
-    border-color;
+
+  background: rgba( 255, 255, 255, 0.35 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .stockBtn:hover {
@@ -204,6 +215,24 @@
 
 .active {
   background-color: #d3e0ffc7;
+}
+
+#buttons button {
+  padding: 10px 55px;
+  border-radius: 15px;
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border-radius: 10px;
+  font-weight: bold;
+}
+#result-button {
+  background: rgb(161 197 252 / 34%);
+  border: 2px solid rgb(10 42 169 / 15%);
+}
+
+#again-button {
+  background: rgb(247 23 20 / 14%);
+  border: 2px solid rgb(247 154 154);
 }
 </style>
 

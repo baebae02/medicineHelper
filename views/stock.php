@@ -171,12 +171,11 @@
 </html>
 
 <style>
-.text {
-  text-align: center;
-}
+
 #stock-container {
   padding: 20px;
   background-image: url('../assets/stock.jpeg');
+  position: relative;
 }
 #stock-list {
   display: grid;
@@ -199,7 +198,7 @@
   border-radius: 6px;
   color: #24292e;
 
-  background: rgba( 255, 255, 255, 0.35 );
+  background: rgb(255 255 255 / 0%);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 8.5px );
   -webkit-backdrop-filter: blur( 8.5px );
@@ -208,9 +207,10 @@
 }
 
 .stockBtn:hover {
-  background-color: #f3f4f6;
-  border-color: #1b1f2326;
+  background-color: #6172ed66;
+  border-color: #0014528c;
   transition-duration: 0.1s;
+  animation: move 1.5s infinite;
 }
 
 .active {
@@ -233,6 +233,34 @@
 #again-button {
   background: rgb(247 23 20 / 14%);
   border: 2px solid rgb(247 154 154);
+}
+
+#result-container{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+#result-message {
+}
+@keyframes move {
+    0%{
+        transform: translateY(0px);
+    }
+    25%{
+        transform: translateY(7px);
+    }
+    50%{
+        transform: translateY(-5px);
+    }
+    75%{
+        transform: translateY(3px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 </style>
 
@@ -265,13 +293,15 @@ function clickResultBtn(event) {
 
   if (selectStock == answerStock.trim()) {
     /* 정답 */
-    resultMessage.innerText = "정답입니다!";
     resultInfo.innerText =
       "<?php echo ("종목: " . $answer_name . " 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
+    resultText =
+      "<?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
+    resultMessage.innerHTML = "<div style='padding: 60px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
 
   } else {
     /* 오답 */
-    resultMessage.innerText = "오답입니다!";
+    resultMessage.innerHTML = "<div style='padding: 60px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
   }
 }
 

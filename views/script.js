@@ -1,5 +1,18 @@
-function goIndex() { location.replace('index.html'); } 
-function goHospital() { location.replace('hospital.html'); } 
-function goMedicine() { location.replace('medicine.html'); } 
-function goPharmacy() { location.replace('pharmacy.html'); } 
-function goRecord() { location.replace('record.php'); } 
+function goIndex() {
+  location.replace("index.html");
+}
+function goHospital() {
+  location.replace("hospital.html");
+}
+function goMedicine() {
+  location.replace("medicine.html");
+}
+function goPharmacy() {
+  location.replace("pharmacy.html");
+}
+function goRecord() {
+  location.replace("record.php");
+}
+function goStock() {
+  location.replace("stock.html");
+}

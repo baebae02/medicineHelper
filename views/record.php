@@ -8,28 +8,32 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet"/>
-        <title>Record</title>
-    </head>
-    <body>
-        <div class="container">
-        <div class="topBar">
-          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
-          <nav class="navBar">
-            <a id="hospital" onclick="goHospital()">병원</a>
-            <a id="pharmacy" onclick="goPharmacy()">약국</a>
-            <a id="medicine" onclick="goMedicine()">약</a>
-            <a id="store" onclick="goRecord()">기록</a>
-            <a id="stock" onclick="goStock()">게임</a>
-          </nav>
-        </div>
-        <div class="list">
-            <div class="medicine">
-                <?php 
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" />
+  <title>Record</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img onclick="goIndex()" src="../assets/logo.png" style="width: 300px" />
+    </div>
+    <div class="topBar">
+      <nav class="navBar">
+        <a id="hospital" onclick="goHospital()">병원</a>
+        <a id="pharmacy" onclick="goPharmacy()">약국</a>
+        <a id="medicine" onclick="goMedicine()">약</a>
+        <a id="store" onclick="goRecord()">기록</a>
+        <a id="stock" onclick="goStock()">게임</a>
+      </nav>
+    </div>
+    <div class="list">
+      <div class="medicine">
+        <?php 
                     $sql = "SELECT * FROM record";
                     $result = mysqli_query($connect, $sql);
                     if (mysqli_num_rows($result) > 0) {
@@ -49,75 +53,80 @@
                         echo date("Y-m-d", time());
                     }
                 ?>
-            </div>
-        </div>
-        <div>
-            <button class="add" onclick="window.open('./addRecord.html')">약 등록하기</button>
-        </div>
+      </div>
     </div>
-    <script type="text/javascript" src="./script.js"></script> 
+    <div>
+      <button class="add" onclick="window.open('./addRecord.html')">약 등록하기</button>
+    </div>
+  </div>
+  <script type="text/javascript" src="./script.js"></script>
 </body>
+
 </html>
 <style>
-    .container {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-    }
-    .list {
-        background-color: rgb(241, 241, 229);
-        width: 100%;
-        border-radius: 15px;
-        margin: 0 auto;
-    }
-    .list .medicine {
-        border-radius: 15px; 
-        padding: 20px 20px 40px 20px; 
-        margin: 10px;  
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(15%, auto));
-        margin: 20px;
-        background-color: white; 
-        column-gap: 15px;
-    }
-    .item {
-        margin: 5px;
-        padding: 20px;
-        background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to bottom left, #6799e782 50%, #e7e6e2 50%);
-        background-origin: border-box;
-        background-clip: content-box, border-box;
-        /* background: linear-gradient(to bottom left, #6799e782 50%, #e7e6e2 50%); */
-        /* background-color: #e5e5a5; */
-        border-radius: 60% 60% 40% 40%; 
-        text-align: center;
-    }
-    .item:nth-child(2n) {
-        background-color: aqua;
-    }
-    .item:nth-child(5n) {
-        background-image : linear-gradient(#ffffff, #ffffff),linear-gradient(to bottom left, #d6e14882 50%, #7b7c7c99 50%);
-    }
-    
-    .item p {
-        padding: 0 10px;
-        font-size: 15px;
-        font-weight: bold;
-    }
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
 
-    .add {
-        margin: 20px;
-        border: none;
-        padding: 20px;
-        border-radius: 25px;
-        font-size: 15px;
-        background-color: white;
-        box-shadow: 3px 3px 3px 3px #e7e7e7;
-    }
+.list {
+  background-color: rgb(241, 241, 229);
+  width: 100%;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.list .medicine {
+  border-radius: 15px;
+  padding: 20px 20px 40px 20px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15%, auto));
+  margin: 20px;
+  background-color: white;
+  column-gap: 15px;
+}
+
+.item {
+  margin: 5px;
+  padding: 20px;
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to bottom left, #6799e782 50%, #e7e6e2 50%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  /* background: linear-gradient(to bottom left, #6799e782 50%, #e7e6e2 50%); */
+  /* background-color: #e5e5a5; */
+  border-radius: 60% 60% 40% 40%;
+  text-align: center;
+}
+
+.item:nth-child(2n) {
+  background-color: aqua;
+}
+
+.item:nth-child(5n) {
+  background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(to bottom left, #d6e14882 50%, #7b7c7c99 50%);
+}
+
+.item p {
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add {
+  margin: 20px;
+  border: none;
+  padding: 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  background-color: white;
+  box-shadow: 3px 3px 3px 3px #e7e7e7;
+}
 </style>
 <script>
 function alert() {
-   console.log("알람등록");
+  console.log("알람등록");
 }
-
 </script>

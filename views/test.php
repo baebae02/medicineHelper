@@ -7,14 +7,16 @@
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>의약품 검색</title> 
-	<link rel="stylesheet" type="text/css" href="./searchResult.css">
+  <title>의약품 검색</title>
+  <link rel="stylesheet" type="text/css" href="./searchResult.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="result">
-            <?php
+  <div class="container">
+    <div class="result">
+      <?php
             $sql = "SELECT * FROM info WHERE itemName like '%".$searchItem."%'";
             $sql2 = "SELECT * FROM info WHERE efcyQesitm like '%".$searchItem."%' LIMIT 10";
             $result = mysqli_query($connect, $sql);
@@ -56,8 +58,9 @@
             }
             mysqli_close($connect); // 디비 접속 닫기
             ?>
-        </div>
     </div>
-	
+  </div>
+
 </body>
+
 </html>

@@ -84,15 +84,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="stock.css?ver=2" rel="stylesheet" />
   <script type="text/javascript" src="./script.js"></script>
-  <script type="text/javascript" src="./stock.js"></script>
+  <!-- <script type="text/javascript" src="./stock.js"></script> -->
   <title>Stock</title>
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
 <body>
   <div class="container">
-    <div class="topBar" style="margin-bottom: 20px;">
-      <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
+    <div class="logo">
+      <img onclick="goIndex()" src="../assets/logo.png" style="width: 300px" />
+    </div>
+    <div class="topBar">
       <nav class="navBar">
         <a id="hospital" onclick="goHospital()">병원</a>
         <a id="pharmacy" onclick="goPharmacy()">약국</a>
@@ -171,12 +173,12 @@
 </html>
 
 <style>
-
 #stock-container {
   padding: 20px;
   background-image: url('../assets/stock.jpeg');
   position: relative;
 }
+
 #stock-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -199,11 +201,11 @@
   color: #24292e;
 
   background: rgb(255 255 255 / 0%);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 8.5px );
-  -webkit-backdrop-filter: blur( 8.5px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .stockBtn:hover {
@@ -220,11 +222,12 @@
 #buttons button {
   padding: 10px 55px;
   border-radius: 15px;
-  backdrop-filter: blur( 8.5px );
-  -webkit-backdrop-filter: blur( 8.5px );
+  backdrop-filter: blur(8.5px);
+  -webkit-backdrop-filter: blur(8.5px);
   border-radius: 10px;
   font-weight: bold;
 }
+
 #result-button {
   background: rgb(17 129 11 / 31%);
   border: 2px solid rgb(4 18 2 / 15%);
@@ -235,7 +238,7 @@
   border: 2px solid rgb(247 154 154);
 }
 
-#result-container{
+#result-container {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -243,24 +246,27 @@
 
 }
 
-#result-message {
-}
+
 @keyframes move {
-    0%{
-        transform: translateY(0px);
-    }
-    25%{
-        transform: translateY(7px);
-    }
-    50%{
-        transform: translateY(-5px);
-    }
-    75%{
-        transform: translateY(3px);
-    }
-    100%{
-        transform: translateY(0px);
-    }
+  0% {
+    transform: translateY(0px);
+  }
+
+  25% {
+    transform: translateY(7px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  75% {
+    transform: translateY(3px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 </style>
 
@@ -297,11 +303,13 @@ function clickResultBtn(event) {
       "<?php echo ("종목: " . $answer_name . " 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
     resultText =
       "<?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
-    resultMessage.innerHTML = "<div style='padding: 10px 80px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
+    resultMessage.innerHTML =
+      "<div style='padding: 10px 80px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
 
   } else {
     /* 오답 */
-    resultMessage.innerHTML = "<div style='padding: 10px 80px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
+    resultMessage.innerHTML =
+      "<div style='padding: 10px 80px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
   }
 }
 

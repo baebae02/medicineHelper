@@ -14,7 +14,9 @@
   margin: 0 auto;
 }
 .logo {
-  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .topBar {
@@ -35,7 +37,7 @@
 }
 #stock-container {
   padding: 20px;
-  background-image: url('../assets/stock.jpeg');
+  background-image: url("../assets/stock.jpeg");
 }
 #stock-list {
   display: grid;
@@ -52,7 +54,6 @@
 .hidden {
   display: none;
 }
-
 
 #stock-title {
   display: inline-block;

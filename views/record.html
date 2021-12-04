@@ -1,81 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="style.css" rel="stylesheet"/>
-        <title>Record</title>
-    </head>
-    <body>
-        <div class="container">
-        <div class="topBar">
-          <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
-          <nav class="navBar">
-            <a id="hospital" onclick="goHospital()">병원</a>
-            <a id="pharmacy" onclick="goPharmacy()">약국</a>
-            <a id="medicine" onclick="goMedicine()">약</a>
-            <a id="store" onclick="goRecord()">기록</a>
-            <a id="stock" onclick="goStock()">게임</a>
-
-          </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Record</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img
+          onclick="goIndex()"
+          src="../assets/logo.png"
+          style="width: 300px"
+        />
+      </div>
+      <div class="topBar">
+        <nav class="navBar">
+          <a id="hospital" onclick="goHospital()">병원</a>
+          <a id="pharmacy" onclick="goPharmacy()">약국</a>
+          <a id="medicine" onclick="goMedicine()">약</a>
+          <a id="store" onclick="goRecord()">기록</a>
+          <a id="stock" onclick="goStock()">게임</a>
+        </nav>
+      </div>
+      <p>현재 복용하고 있는 약 정보에요!</p>
+      <div class="list">
+        <div class="medicine">
+          <li>
+            <a>이름: 타이레놀</a>
+            <a>호과: 두통개선</a>
+            <a>복용법: 1일 2번</a>
+          </li>
+          <button class="btn">알람 등록하기</button>
         </div>
-        <p>현재 복용하고 있는 약 정보에요! </p>
-        <div class="list">
-            <div class="medicine">
-                <li>
-                    <a>이름: 타이레놀</a>
-                    <a>호과: 두통개선</a>
-                    <a>복용법: 1일 2번</a>
-                </li>
-                <button class="btn">알람 등록하기</button>
-            </div>
-            <div class="medicine">
-                <li>
-                    <a>이름: 타이레놀</a>
-                    <a>호과: 두통개선</a>
-                    <a>복용법: 1일 2번</a>
-                </li>
-                <button class="btn">알람 등록하기</button>
-            </div>
-            <div class="medicine">
-                <li>
-                    <a>이름: 타이레놀</a>
-                    <a>호과: 두통개선</a>
-                    <a>복용법: 1일 2번</a>
-                </li>
-                <button class="btn">알람 등록하기</button>
-            </div>
+        <div class="medicine">
+          <li>
+            <a>이름: 타이레놀</a>
+            <a>호과: 두통개선</a>
+            <a>복용법: 1일 2번</a>
+          </li>
+          <button class="btn">알람 등록하기</button>
         </div>
+        <div class="medicine">
+          <li>
+            <a>이름: 타이레놀</a>
+            <a>호과: 두통개선</a>
+            <a>복용법: 1일 2번</a>
+          </li>
+          <button class="btn">알람 등록하기</button>
+        </div>
+      </div>
     </div>
-    <script type="text/javascript" src="./script.js"></script> 
-</body>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
 </html>
 
 <style>
-    .container {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-    }
-    .list {
-        width: 80%;
-        background-color: rgb(241, 241, 229);
-        border-radius: 15px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        margin: 0 auto;
-    }
-    .list .medicine {background-color: white; border-radius: 15px; padding: 10px; margin: 20px;}
-    .list .medicine li {display: flex; flex-direction: column;}
-    .list .medicine .btn {border: none; margin: 10px; border-radius: 15px;}
+  .container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
+  .list {
+    width: 80%;
+    background-color: rgb(241, 241, 229);
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+  }
+  .list .medicine {
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px;
+  }
+  .list .medicine li {
+    display: flex;
+    flex-direction: column;
+  }
+  .list .medicine .btn {
+    border: none;
+    margin: 10px;
+    border-radius: 15px;
+  }
 </style>
 <script>
-function alert() {
-   console.log("알람등록");
-}
- document
-        .querySelector(".btn")
-        .addEventListener("click", alert);
+  function alert() {
+    console.log("알람등록");
+  }
+  document.querySelector(".btn").addEventListener("click", alert);
 </script>

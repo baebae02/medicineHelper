@@ -6,6 +6,11 @@
   font-family: sans-serif;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .topBar {
   display: flex;
   justify-content: center;
@@ -18,11 +23,6 @@
 .navBar a {
   padding: 0 20px;
   font-size: 20px;
-}
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .container {

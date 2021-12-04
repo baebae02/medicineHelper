@@ -11,11 +11,14 @@
   </head>
   <body>
     <div class="container">
-      <!-- <div class="intro">
-        <img src="../assets/intro.png" width="50%"/>
-      </div> -->
+      <div class="logo">
+        <img
+          onclick="goIndex()"
+          src="../assets/logo.png"
+          style="width: 300px"
+        />
+      </div>
       <div class="topBar">
-        <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
         <nav class="navBar">
           <a id="hospital" onclick="goHospital()">병원</a>
           <a id="pharmacy" onclick="goPharmacy()">약국</a>
@@ -24,33 +27,35 @@
           <a id="stock" onclick="goStock()">게임</a>
         </nav>
       </div>
-      <h1 id="text">💊건강을 책임지는 Medicine Helper </h1>
-      <p style="font-size: 25px;" id="text">당신의 건강을 위한 다양한 기능이 있습니다.</p>
+      <h1 id="text">💊건강을 책임지는 Medicine Helper</h1>
+      <p style="font-size: 25px" id="text">
+        당신의 건강을 위한 다양한 기능이 있습니다.
+      </p>
       <div class="section">
-        <input type="radio" name="slide" id="slide01" checked>
-        <input type="radio" name="slide" id="slide02">
-        <input type="radio" name="slide" id="slide03">
-    
+        <input type="radio" name="slide" id="slide01" checked />
+        <input type="radio" name="slide" id="slide02" />
+        <input type="radio" name="slide" id="slide03" />
+
         <div class="slidewrap">
           <ul class="slidelist">
             <li>
               <a>
                 <label for="slide03" class="left"></label>
-                <img src="../assets/main_bg/mainbg1.jpg" width="80%;">
+                <img src="../assets/main_bg/mainbg1.jpg" width="80%;" />
                 <label for="slide02" class="right"></label>
               </a>
             </li>
             <li>
               <a>
                 <label for="slide01" class="left"></label>
-                <img src="../assets/main_bg/mainbg2.jpg">
+                <img src="../assets/main_bg/mainbg2.jpg" />
                 <label for="slide03" class="right"></label>
               </a>
             </li>
             <li>
               <a>
                 <label for="slide02" class="left"></label>
-                <img src="../assets/main_bg/mainbg3.jpg">
+                <img src="../assets/main_bg/mainbg3.jpg" />
                 <label for="slide01" class="right"></label>
               </a>
             </li>
@@ -63,51 +68,66 @@
           <p style="font-size: 30px; font-weight: bold">
             알고 먹으면 약, 모르고 먹으면 독
           </p>
-          <p>약은 성분에 따라 치료를 하기도, 부작용을 일으키도 합니다. 복용중인 약의 성분이 궁금하지 않나요? <br>
-            약 검색 기능을 통해 복용 중인 약의 성분을 확인해보세요. <br>
+          <p>
+            약은 성분에 따라 치료를 하기도, 부작용을 일으키도 합니다. 복용중인
+            약의 성분이 궁금하지 않나요? <br />
+            약 검색 기능을 통해 복용 중인 약의 성분을 확인해보세요. <br />
             부작용은 어떤 것이 있는지, 효능은 무엇인지도 알 수 있습니다.
           </p>
-              <img src="../assets/main_medicine.png" width="80%;" style="border-radius: 20px">
-            <br><br><br>
+          <img
+            src="../assets/main_medicine.png"
+            width="80%;"
+            style="border-radius: 20px"
+          />
+          <br /><br /><br />
         </div>
       </div>
       <div class="content">
         <div class="text">
           <i class="fas fa-hospital-alt fa-3x"></i>
           <p style="font-size: 30px; font-weight: bold">
-            주변 병원이 궁금한가요? 
+            주변 병원이 궁금한가요?
           </p>
-          <p>코로나로 병원 갈 일이 많아진 요즘, 빠르게 주변 병원을 찾고 싶다면 클릭해보세요.<br>
-          병원을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다. <br>
-          여러분의 위치에서 가장 가까운 병원 5곳을 알려드려요! </p>
-            <br><br><br>
+          <p>
+            코로나로 병원 갈 일이 많아진 요즘, 빠르게 주변 병원을 찾고 싶다면
+            클릭해보세요.<br />
+            병원을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다. <br />
+            여러분의 위치에서 가장 가까운 병원 5곳을 알려드려요!
+          </p>
+          <br /><br /><br />
         </div>
       </div>
       <div class="content">
         <div class="text">
           <i class="fas fa-mortar-pestle fa-3x"></i>
           <p style="font-size: 30px; font-weight: bold">
-            주변 약국이 궁금한가요? 
+            주변 약국이 궁금한가요?
           </p>
-          <p>병원을 가기보단 약국가서 빠르게 처방받고 싶으시다면 여기를 클릭해보세요.<br>
-          마찬가지로, 약국을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다. <br>
-          여러분의 위치에서 가장 가까운 약국 5곳을 알려드려요! </p>
-            <br><br><br>
+          <p>
+            병원을 가기보단 약국가서 빠르게 처방받고 싶으시다면 여기를
+            클릭해보세요.<br />
+            마찬가지로, 약국을 찾기 전, 현재 위치 조회를 허용해주셔야 합니다.
+            <br />
+            여러분의 위치에서 가장 가까운 약국 5곳을 알려드려요!
+          </p>
+          <br /><br /><br />
         </div>
       </div>
       <div class="content">
-        <diV class="text">
-        <i class="fas fa-bell fa-3x"></i>
-        <p style="font-size: 30px; font-weight: bold">
-          약 먹는 것을 자주 깜빡하시나요? 
-        </p>
-        <p>하루 3번 꼬박꼬박 약을 먹는 것은 쉬운일이 아닙니다. <br>
-        현재 복용중인 약을 적고 알람을 등록하시면, 정해진 시간에 알람을 카톡으로 보내드려요!<br>
-        저희와 함께라면 완치는 식은 죽 먹기 ! </p>
-          <br><br><br>
-        </diV>
+        <div class="text">
+          <i class="fas fa-bell fa-3x"></i>
+          <p style="font-size: 30px; font-weight: bold">
+            약 먹는 것을 자주 깜빡하시나요?
+          </p>
+          <p>
+            하루 3번 꼬박꼬박 약을 먹는 것은 쉬운일이 아닙니다. <br />
+            현재 복용중인 약을 적고 알람을 등록하시면, 정해진 시간에 알람을
+            카톡으로 보내드려요!<br />
+            저희와 함께라면 완치는 식은 죽 먹기 !
+          </p>
+          <br /><br /><br />
+        </div>
       </div>
-      
+    </div>
   </body>
 </html>
-

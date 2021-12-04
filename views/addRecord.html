@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addRecord</title>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" action="receive.php">
+            <h2>현재 복용하고 있는 약을 추가하고 알림 받으세요!</h2>
+            <p>아래 예시처럼 약 정보를 채워주세요 😉</p>
+            <div class="result">
+                <div id="text">제품명</div>
+                <div>닥터팜 비타민</div>
+                <div id="text">효능</div>
+                <div>뼈 건강</div>
+                <div id="text">복용법</div>
+                <div>1일 2정</div>
+                <div id="text">알람 여부</div>
+                <div>
+                    <input type="radio" id="exon"  />
+                    <label ><span></span>알람 ⭕️</label>
+                    <input type="radio" id="exoff" />
+                    <label ><span></span>알람 ❌</label>
+                </div>
+            </div>
+            <div class="result">
+                <div id="text">제품명</div>
+                <input id="input" name="itemName" placeholder="제품명을 입력해주세요">
+                <div id="text">효능</div>
+                <input id="input" name="efcyQesitm"placeholder="효능을 입력해주세요"/>
+                <div id="text">복용법</div>
+                <input id="input" name="useMethodQesitm" placeholder="복용법을 입력해주세요"/>
+                <div id="text">알람 여부</div>
+                <div>
+                    <input type="radio" id="True" name="alarm" value="True"/>
+                    <label for="True"><span></span>알람 ⭕️</label>
+                    <input type="radio" id="False" name="alarm"  value="False"/>
+                    <label for="False"><span></span>알람 ❌</label>
+                </div>
+            </div>
+            <div id="btnwrap">
+                <button id="btn">➕ 추가하기</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+* {font-family:  sans-serif;  background-color: #f5f5ff; }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container h2 {
+    text-align: center;
+}
+.container p {
+    text-align: center;
+}
+.result {
+    box-shadow: 3px 3px 3px 3px #e7e7e7;
+    margin: 20px auto;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 200px 300px;
+    row-gap: 10px;
+}
+.result p {
+    background-color: white;
+}
+.result div {
+    background-color: white;
+}
+.result input {
+    border: none;
+    background-color: white;
+}
+.result label {
+    background-color: white;
+}
+#btn {
+    border:none;
+    background-color: white;
+    padding: 10px 40px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px 3px #e7e7e7;
+}
+#btnwrap{
+    display: flex;
+    align-self: center;
+}
+</style>

@@ -226,8 +226,8 @@
   font-weight: bold;
 }
 #result-button {
-  background: rgb(161 197 252 / 34%);
-  border: 2px solid rgb(10 42 169 / 15%);
+  background: rgb(17 129 11 / 31%);
+  border: 2px solid rgb(4 18 2 / 15%);
 }
 
 #again-button {
@@ -297,11 +297,11 @@ function clickResultBtn(event) {
       "<?php echo ("종목: " . $answer_name . " 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
     resultText =
       "<?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
-    resultMessage.innerHTML = "<div style='padding: 60px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
+    resultMessage.innerHTML = "<div style='padding: 10px 80px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
 
   } else {
     /* 오답 */
-    resultMessage.innerHTML = "<div style='padding: 60px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
+    resultMessage.innerHTML = "<div style='padding: 10px 80px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
   }
 }
 

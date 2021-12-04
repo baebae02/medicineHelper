@@ -24,6 +24,7 @@
             <a id="pharmacy" onclick="goPharmacy()">약국</a>
             <a id="medicine" onclick="goMedicine()">약</a>
             <a id="store" onclick="goRecord()">기록</a>
+            <a id="stock" onclick="goStock()">게임</a>
           </nav>
         </div>
         <div class="list">
@@ -51,7 +52,7 @@
             </div>
         </div>
         <div>
-            <button class="add" onclick="window.open('./addRecord.php')">약 등록하기</button>
+            <button class="add" onclick="window.open('./addRecord.html')">약 등록하기</button>
         </div>
     </div>
     <script type="text/javascript" src="./script.js"></script> 

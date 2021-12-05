@@ -17,6 +17,11 @@
   padding: 0 20px;
   font-size: 20px;
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .container {
   display: flex;
@@ -42,9 +47,9 @@
   align-self: center;
   border: none;
   margin: 10px;
-  transition: all 1s; 
+  transition: all 1s;
 }
-#find-pharamacy{
+#find-pharamacy {
   border: none;
   border-radius: 15px;
   width: 100px;
@@ -52,7 +57,7 @@
   align-self: center;
   border: none;
   margin: 10px;
-  transition: all 1s; 
+  transition: all 1s;
 }
 
 .content {
@@ -78,9 +83,8 @@
   flex-direction: column;
 }
 .btn {
-  align-self: center; 
+  align-self: center;
   height: 150px;
-
 }
 .where {
   width: 1000px;
@@ -98,8 +102,7 @@
   height: auto;
 }
 
-.pharamacy{
+.pharamacy {
   margin-top: 20px;
   height: auto;
 }
-

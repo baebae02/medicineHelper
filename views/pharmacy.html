@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Pharamacy</title>
-      <link href="hospital.css" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharamacy</title>
+    <link href="hospital.css" rel="stylesheet" />
   </head>
   <body>
-      <div class="container">
-          <div class="topBar">
-              <img class="logo" onclick="goIndex()" src="../assets/logo.png" style="width: 60px;"></img>
-              <nav class="navBar">
-                <a id="hospital" onclick="goHospital()">병원</a>
-                <a id="pharmacy" onclick="goPharmacy()">약국</a>
-                <a id="medicine" onclick="goMedicine()">약</a>
-                <a id="store" onclick="goRecord()">기록</a>
-                <a id="stock" onclick="goStock()">게임</a>
-              </nav>
-          </div>
-          <h2 style="align-self: center;">근처 약국을 찾아볼까요?</h2>
-          <div class="btn" onclick="ChangeImg()">
-            <img id="find-pharamacy" src="../assets/buttonUp.png">
-          </div>
-          <div class="where" id="map-container">
-              <br>
-              <p id="map-title">🏥 현재 위치를 알려주세요!</p>
-              <div id="pharamacy-map" style="width: 500px; height: 400px"></div>
-              <div id="pharamacyList"></div>
-          </div>
-          <button id="create-kakao-link-btn" onclick="sendMsg()">
-            <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-          </button>
+    <div class="container">
+      <div class="logo">
+        <img
+          onclick="goIndex()"
+          src="../assets/logo.png"
+          style="width: 300px"
+        />
       </div>
-    <script type="text/javascript" src="./script.js"></script> 
+      <div class="topBar">
+        <nav class="navBar">
+          <a id="hospital" onclick="goHospital()">병원</a>
+          <a id="pharmacy" onclick="goPharmacy()">약국</a>
+          <a id="medicine" onclick="goMedicine()">약</a>
+          <a id="store" onclick="goRecord()">기록</a>
+          <a id="stock" onclick="goStock()">게임</a>
+        </nav>
+      </div>
+      <h2 style="align-self: center">근처 약국을 찾아볼까요?</h2>
+      <div class="btn" onclick="ChangeImg()">
+        <img id="find-pharamacy" src="../assets/buttonUp.png" />
+      </div>
+      <div class="where" id="map-container">
+        <br />
+        <p id="map-title">🏥 현재 위치를 알려주세요!</p>
+        <div id="pharamacy-map" style="width: 500px; height: 400px"></div>
+        <div id="pharamacyList"></div>
+      </div>
+      <button id="create-kakao-link-btn" onclick="sendMsg()">
+        <img
+          src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
+        />
+      </button>
+    </div>
+    <script type="text/javascript" src="./script.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"></script>
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8be14ebb15975289754d69e11dec6463"
+    ></script>
   </body>
 </html>
 <script>
-  function gps_check(){
-      if (navigator.geolocation) {
-          var options = {timeout:60000};
-          navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
-      } else {
-          alert("GPS_추적이 불가합니다.");
-          gps_use = false;
-      }
+  function gps_check() {
+    if (navigator.geolocation) {
+      var options = { timeout: 60000 };
+      navigator.geolocation.getCurrentPosition(
+        showLocation,
+        errorHandler,
+        options
+      );
+    } else {
+      alert("GPS_추적이 불가합니다.");
+      gps_use = false;
     }
-    function showLocation(position) {
-        console.log("mhere");
-        gps_use = true;
-        gps_lat = position.coords.latitude;
-        gps_lng = position.coords.longitude;
-        localStorage.clear(); 
-        localStorage.setItem('posX', gps_lat);
-        localStorage.setItem('posY', gps_lng);
-        console.log(gps_lng, gps_lat);
+  }
+  function showLocation(position) {
+    console.log("mhere");
+    gps_use = true;
+    gps_lat = position.coords.latitude;
+    gps_lng = position.coords.longitude;
+    localStorage.clear();
+    localStorage.setItem("posX", gps_lat);
+    localStorage.setItem("posY", gps_lng);
+    console.log(gps_lng, gps_lat);
+  }
+  function errorHandler(error) {
+    if (error.code == 1) {
+      alert("접근차단");
+    } else if (err.code == 2) {
+      alert("위치를 반환할 수 없습니다.");
     }
-    function errorHandler(error) {
-        if(error.code == 1) {
-            alert("접근차단");
-        } else if( err.code == 2) {
-            alert("위치를 반환할 수 없습니다.");
-        }
-        gps_use = false;
-    } 
+    gps_use = false;
+  }
   const pharamacyList = [];
   function findPharmacy() {
     gps_check();
     // gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
     const PHARAMACY_API_KEY =
-    "Ta6sT%2BivsJ1PVZrsEg4KJQ1A35VgZcgnO1lMFHw0YueFyfqn6Gi0Csllevy1veAryofhGi2SPe1Tp0H4IVvccg%3D%3D";
+      "Ta6sT%2BivsJ1PVZrsEg4KJQ1A35VgZcgnO1lMFHw0YueFyfqn6Gi0Csllevy1veAryofhGi2SPe1Tp0H4IVvccg%3D%3D";
     const latitude = localStorage.getItem("posX");
     const longitude = localStorage.getItem("posY");
-    console.log(latitude,longitude);
+    console.log(latitude, longitude);
     const pharamacyNumber = 5;
     const radius = 2000;
 
     if (latitude == "" || longitude == "") {
-        alert("먼저 현재 위치를 찾으세요!");
-        return;
+      alert("먼저 현재 위치를 찾으세요!");
+      return;
     }
 
     var gps_use = null; //gps의 사용가능 여부
@@ -89,7 +107,6 @@
     var gps_lng = null; // 경도
     var gps_position; // gps 위치 객체
 
-   
     $.ajax({
       url: `http://apis.data.go.kr/B551182/pharmacyInfoService/getParmacyBasisList?ServiceKey=${PHARAMACY_API_KEY}&numOfRows=${pharamacyNumber}&xPos=${longitude}&yPos=${latitude}&radius=${radius}`,
       type: "GET",
@@ -112,38 +129,39 @@
           tmp.latitude = pharamacyLat;
           pharamacyList[i] = tmp;
           $("#pharmacy-list").append(
-          "<li><div>" +
-            pharamacyName +
-            "</div><div>" +
+            "<li><div>" +
+              pharamacyName +
+              "</div><div>" +
               pharamacyAddr +
-            "</div></li>"
-        );
+              "</div></li>"
+          );
         }
         console.log(pharamacyList);
 
         //지도에 병원 5개 표시
         var mapContainer = document.getElementById("pharamacy-map");
         var mapOptions = {
-            center: new kakao.maps.LatLng(latitude, longitude),
-            level: 6,
+          center: new kakao.maps.LatLng(latitude, longitude),
+          level: 6,
         };
         var map = new kakao.maps.Map(mapContainer, mapOptions);
         var imageSrc =
-            "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+          "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
         var currentMarker = new kakao.maps.Marker({
-            map: map,
-            position: new kakao.maps.LatLng(latitude,longitude),
-            title: "현재 위치",
+          map: map,
+          position: new kakao.maps.LatLng(latitude, longitude),
+          title: "현재 위치",
         });
-        
-        document.getElementById("map-title").innerHTML = "<h3>여기가 맞나요?</h3>"
+
+        document.getElementById("map-title").innerHTML =
+          "<h3>여기가 맞나요?</h3>";
         // document.getElementById("pharamacyList").innerHTML = JSON.stringify(pharamacyList);
 
         for (let i = 0; i < pharamacyNumber; i++) {
-            var imageSize = new kakao.maps.Size(24, 35);
-            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-            var marker = new kakao.maps.Marker({
+          var imageSize = new kakao.maps.Size(24, 35);
+          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+          var marker = new kakao.maps.Marker({
             map: map,
             position: new kakao.maps.LatLng(
               pharamacyList[i].latitude,
@@ -151,93 +169,93 @@
             ),
             title: pharamacyList[i].name,
             image: markerImage,
-            });
+          });
         }
       },
       error: function (request, status, error) {
-      alert("Ajax 요청 실패");
+        alert("Ajax 요청 실패");
       },
     });
   }
 
-  function sendMsg(){
-        const data = pharamacyList[0];
-        alert(data);
-        // const data = JSON.parse(localStorage.getItem('data'));
-        Kakao.init('8be14ebb15975289754d69e11dec6463')
-        Kakao.Link.createDefaultButton({
-        container: '#create-kakao-link-btn',
-        objectType: 'location',
-        address: data.addr,
-        content: {
-            title: data.name,
-            description: '가장 가까운 약국입니다, 아프지마세요!',
-            imageUrl: 'https://saengmotmi.netlify.app/static/75aa5244eed6e978da437863d7061ab5/11864/070301.png',
-            link: {
-            mobileWebUrl: 'https://developers.kakao.com',
-            webUrl: 'https://developers.kakao.com',
-            },
+  function sendMsg() {
+    const data = pharamacyList[0];
+    alert(data);
+    // const data = JSON.parse(localStorage.getItem('data'));
+    Kakao.init("8be14ebb15975289754d69e11dec6463");
+    Kakao.Link.createDefaultButton({
+      container: "#create-kakao-link-btn",
+      objectType: "location",
+      address: data.addr,
+      content: {
+        title: data.name,
+        description: "가장 가까운 약국입니다, 아프지마세요!",
+        imageUrl:
+          "https://saengmotmi.netlify.app/static/75aa5244eed6e978da437863d7061ab5/11864/070301.png",
+        link: {
+          mobileWebUrl: "https://developers.kakao.com",
+          webUrl: "https://developers.kakao.com",
         },
-        social: {
-            likeCount: 286,
-            commentCount: 45,
-            sharedCount: 845,
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845,
+      },
+      buttons: [
+        {
+          title: "웹으로 보기",
+          link: {
+            mobileWebUrl: "https://developers.kakao.com",
+            webUrl: "https://developers.kakao.com",
+          },
         },
-        buttons: [
-            {
-            title: '웹으로 보기',
-            link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://developers.kakao.com',
-            },
-            },
-            {
-            title: '앱으로 보기',
-            link: {
-                mobileWebUrl: 'https://developers.kakao.com',
-                webUrl: 'https://developers.kakao.com',
-            },
-            },
-        ],
-        })
-    }
+        {
+          title: "앱으로 보기",
+          link: {
+            mobileWebUrl: "https://developers.kakao.com",
+            webUrl: "https://developers.kakao.com",
+          },
+        },
+      ],
+    });
+  }
 
-  function ChangeImg(){
-    var btn =  document.getElementById("find-pharamacy");
+  function ChangeImg() {
+    var btn = document.getElementById("find-pharamacy");
     btn.src = "../assets/buttonDown.png";
   }
 
   document
-  .querySelector("#find-pharamacy")
-  .addEventListener("click", findPharmacy);
+    .querySelector("#find-pharamacy")
+    .addEventListener("click", findPharmacy);
 </script>
 
-
 <style>
-#create-kakao-link-btn{
-  border: none;
-  position: fixed;
-  right: 20px;
-  background-color: white;
-  animation: move 1.5s infinite;
-  animation-delay: 1s;
-}
+  #create-kakao-link-btn {
+    border: none;
+    position: fixed;
+    right: 20px;
+    background-color: white;
+    animation: move 1.5s infinite;
+    animation-delay: 1s;
+  }
 
-@keyframes move {
-    0%{
-        transform: translateY(0px);
+  @keyframes move {
+    0% {
+      transform: translateY(0px);
     }
-    25%{
-        transform: translateY(10px);
+    25% {
+      transform: translateY(10px);
     }
-    50%{
-        transform: translateY(-7px);
+    50% {
+      transform: translateY(-7px);
     }
-    75%{
-        transform: translateY(5px);
+    75% {
+      transform: translateY(5px);
     }
-    100%{
-        transform: translateY(0px);
+    100% {
+      transform: translateY(0px);
     }
-}
+  }
 </style>

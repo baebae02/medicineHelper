@@ -1,7 +1,7 @@
 <?php 
 
 class Stock {
-    public string $name;                // 이름
+    // public string $name;                // 이름
     public int $nowPrice;               // 현재가
     public int $compareWithYesterday;   // 전일비
     public float $changeRatio;          // 등락률

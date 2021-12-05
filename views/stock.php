@@ -1,5 +1,9 @@
 <?php 
 
+  if (!is_dir('./stockImage')) {
+    // dir doesn't exist, make it
+    mkdir('./stockImage');
+  }
   $plus_arr = array(); /* 증가한 종목 */
   $minus_arr = array(); /* 감소한 종목 */
 
@@ -19,12 +23,13 @@
   for($i = 0; $i < count($stockList)-2; $i++) { 
     $all_td_tags = $finder->query('td', $stockList[$i]);
       // print_r($all_td_tags->item(0));
+      $stockId = (string)preg_split("/[=]+/u", $all_td_tags->item(0)->childNodes->item(0)->childNodes->item(0)->attributes->item(0)->nodeValue)[1];
       $stockName = (string)str_replace(" *", "", $all_td_tags->item(0)->nodeValue);
       $changeRatio = (float)str_replace($removeChar, "", $all_td_tags->item(3)->nodeValue);
       $compareWithYesterday = (int)str_replace($removeChar, "", $all_td_tags->item(2)->textContent);
       $nowPrice = (int)str_replace($removeChar, "", $all_td_tags->item(1)->textContent);
 
-      $stockInfo = array($stockName,$changeRatio,$compareWithYesterday,$nowPrice);
+      $stockInfo = array($stockName,$changeRatio,$compareWithYesterday,$nowPrice, $stockId);
 
       if($changeRatio > 0) {
           array_push($plus_arr, $stockInfo);
@@ -45,11 +50,12 @@
     if (($wrong1 != $wrong2)&&($wrong2 != $wrong3)) break;
   }
 
+
   $mix_arr = array(
-    array("plus",$plus_arr[$answer][0],$plus_arr[$answer][1],$plus_arr[$answer][2],$plus_arr[$answer][3]), 
-    array("minus",$minus_arr[$wrong1][0],$minus_arr[$wrong1][1],$minus_arr[$wrong1][2],$minus_arr[$wrong1][3]), 
-    array("minus",$minus_arr[$wrong2][0],$minus_arr[$wrong2][1],$minus_arr[$wrong2][2],$minus_arr[$wrong2][3]), 
-    array("minus",$minus_arr[$wrong3][0],$minus_arr[$wrong3][1],$minus_arr[$wrong3][2],$minus_arr[$wrong3][3]),
+    array("plus",$plus_arr[$answer][0],$plus_arr[$answer][1],$plus_arr[$answer][2],$plus_arr[$answer][3], $plus_arr[$answer][4]), 
+    array("minus",$minus_arr[$wrong1][0],$minus_arr[$wrong1][1],$minus_arr[$wrong1][2],$minus_arr[$wrong1][3], $minus_arr[$wrong1][4]), 
+    array("minus",$minus_arr[$wrong2][0],$minus_arr[$wrong2][1],$minus_arr[$wrong2][2],$minus_arr[$wrong2][3], $minus_arr[$wrong2][4]), 
+    array("minus",$minus_arr[$wrong3][0],$minus_arr[$wrong3][1],$minus_arr[$wrong3][2],$minus_arr[$wrong3][3], $minus_arr[$wrong3][4]),
   );
 
   /* $mix_arr = array(
@@ -59,10 +65,12 @@
     array("minus",$minus_arr[$wrong3]),
   ); */
 
+
   $answer_name = $plus_arr[$answer][0];
   $answer_changeRatio = $plus_arr[$answer][1];
   $answer_compareWithYesterday = $plus_arr[$answer][2];
   $answer_nowPrice = $plus_arr[$answer][3];
+  $answer_stockId = $plus_arr[$answer][4];
   
 
   /* 결과 */
@@ -108,50 +116,34 @@
     <div id="stock-container">
       <div id="stock-list">
         <div id="stock">
-          <div class="hidden">
-            <?php 
-            echo ($mix_arr[0][1]);
-            ?>
-          </div>
           <button class="stockBtn" type="button">
             <?php
-              echo ($mix_arr[0][1]);
+              echo ("<B>".$mix_arr[0][1]) . "<br></B>";
+              echo "<img width=180px; height=120px; src='../api/stock/stockImage/".$mix_arr[0][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
-          <div class="hidden">
-            <?php
-            echo ($mix_arr[1][0]);
-            ?>
-          </div>
           <button class="stockBtn" type="button">
             <?php
-              echo ($mix_arr[1][1]);
+              echo ("<B>".$mix_arr[1][1]."<br></B>");
+              echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[1][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
-          <div class="hidden">
-            <?php
-            echo ($mix_arr[2][0]);
-            ?>
-          </div>
           <button class="stockBtn" type="button">
             <?php
-              echo ($mix_arr[2][1]);
+              echo ("<B>".$mix_arr[2][1])."<br></B>";
+              echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[2][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
-          <div class="hidden">
-            <?php
-            echo ($mix_arr[3][0]);
-            ?>
-          </div>
           <button class="stockBtn" type="button">
             <?php
-              echo ($mix_arr[3][1]);
+              echo ("<B>".$mix_arr[3][1])."<br></B>";
+              echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[3][5].".jpg'>";
             ?>
           </button>
         </div>
@@ -206,15 +198,20 @@
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+.stockBtn img {
+  width:
+}
 .stockBtn:hover {
   background-color: #6172ed66;
   border-color: #0014528c;
   transition-duration: 0.1s;
   animation: move 1.5s infinite;
+  width: 200px;
+  height: 200px;
 }
 
 .active {
-  background-color: #d3e0ffc7;
+  background-color: #435da5c7;
 }
 
 #buttons button {
@@ -225,6 +222,7 @@
   border-radius: 10px;
   font-weight: bold;
 }
+
 #result-button {
   background: rgb(17 129 11 / 31%);
   border: 2px solid rgb(4 18 2 / 15%);

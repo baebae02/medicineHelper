@@ -90,7 +90,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="stock.css?ver=2" rel="stylesheet" />
+  <link href="stock.css?ver=4" rel="stylesheet" />
   <script type="text/javascript" src="./script.js"></script>
   <!-- <script type="text/javascript" src="./stock.js"></script> -->
   <title>Stock</title>
@@ -119,32 +119,52 @@
       <div id="stock-list">
         <div id="stock">
           <button class="stockBtn" type="button">
+            <div id="stockBtnName">
+              <?php
+              echo ($mix_arr[0][1]);
+              ?>
+            </div>
             <?php
-              echo ("<B>".$mix_arr[0][1]) . "<br></B>";
+              // echo ("<B>".$mix_arr[0][1]) . "<br></B>";
               echo "<img width=180px; height=120px; src='../api/stock/stockImage/".$mix_arr[0][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
           <button class="stockBtn" type="button">
+            <div id="stockBtnName">
+              <?php
+              echo ($mix_arr[1][1]);
+              ?>
+            </div>
             <?php
-              echo ("<B>".$mix_arr[1][1]."<br></B>");
+              // echo ("<B>".$mix_arr[1][1]."<br></B>");
               echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[1][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
           <button class="stockBtn" type="button">
+            <div id="stockBtnName">
+              <?php
+              echo ($mix_arr[2][1]);
+              ?>
+            </div>
             <?php
-              echo ("<B>".$mix_arr[2][1])."<br></B>";
+              // echo ("<B>".$mix_arr[2][1])."<br></B>";
               echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[2][5].".jpg'>";
             ?>
           </button>
         </div>
         <div id="stock">
           <button class="stockBtn" type="button">
+            <div id="stockBtnName">
+              <?php
+              echo ($mix_arr[3][1]);
+              ?>
+            </div>
             <?php
-              echo ("<B>".$mix_arr[3][1])."<br></B>";
+              // echo ("<B>".$mix_arr[3][1])."<br></B>";
               echo "<img width=180px; height=120px;  src='../api/stock/stockImage/".$mix_arr[3][5].".jpg'>";
             ?>
           </button>
@@ -200,9 +220,10 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.stockBtn img {
+/* .stockBtn img {
   width:
-}
+} */
+
 .stockBtn:hover {
   background-color: #6172ed66;
   border-color: #0014528c;
@@ -285,14 +306,14 @@ function clickResultBtn(event) {
   /* 정답인 종목 표시하기 */
 
   /* 선택한 답 */
-  let selectStock = document.querySelector(".active").innerText;
+  let selectStock = document.querySelector(".active #stockBtnName").innerText;
   /* 정답 */
   let answerStock = "<?php echo $answer_name?>";
   let resultMessage = document.querySelector("#result-message");
   let resultInfo = document.querySelector("#result-info");
 
-  console.log(answerStock);
-  console.log(selectStock);
+  console.log("answer: " + answerStock);
+  console.log("select: " + selectStock);
 
   if (selectStock == answerStock.trim()) {
     /* 정답 */

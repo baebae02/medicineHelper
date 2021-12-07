@@ -227,8 +227,6 @@
 .stockBtn:hover {
   background-color: #6172ed66;
   border-color: #0014528c;
-  transition-duration: 0.1s;
-  animation: move 1.5s infinite;
   width: 200px;
   height: 200px;
 }
@@ -322,8 +320,9 @@ function clickResultBtn(event) {
     resultText =
       "<?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
     resultMessage.innerHTML =
-      "<div style='padding: 10px 80px; border-radius:25px; background-color: #8987fb; box-shadow: 3px 3px 3px 3px #443e95;'><h2>SUCESS </h2></div>";
-
+      "<div style='padding: 10px 80px; font-size: 30px; text-shadow: 4px 0 #2514ff, 0 4px #d5f5ff, 7px 0 #a6f3ff, 0 3px #5ca6a1;'><h2>SUCESS </h2></div>";
+    // resultMessage.innerHTML = 
+    //   "<div style='font-size: 15px;>".resultText."</div>";
   } else {
     /* 오답 */
     resultMessage.innerHTML =

@@ -119,7 +119,7 @@
 .add {
   margin: 10px;
   width: 200px;
-  font-size: 30px;
+  font-size: 25px;
   border: none;
   height: 100px;
   padding: 20px;

@@ -175,8 +175,8 @@
         <button id="again-button" onClick="refreshPage()">다시하기</button>
       </div>
       <div id="result-container">
-        <div id="result-message"></div>
-        <div id="result-info"></div>
+        <div id="result-message" style="padding: 0; margin: 0px; text-align: center;"></div>
+        <div id="result-info" style="font-weight: bold; width: 400px;"></div>
       </div>
     </div>
   </div>
@@ -227,8 +227,6 @@
 .stockBtn:hover {
   background-color: #6172ed66;
   border-color: #0014528c;
-  width: 200px;
-  height: 200px;
 }
 
 .active {
@@ -318,7 +316,7 @@ function clickResultBtn(event) {
     resultInfo.innerText =
       "<?php echo ("종목: " . $answer_name . " 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
     resultText =
-      "<?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?>";
+      "<p><?php echo ("종목: ".$answer_name." 등락률: " .$answer_changeRatio. " 현재가: "  . $answer_nowPrice . " 전일비: " . $answer_compareWithYesterday)?></p>";
     resultMessage.innerHTML =
       "<div style='padding: 10px 80px; font-size: 30px; text-shadow: 4px 0 #2514ff, 0 4px #d5f5ff, 7px 0 #a6f3ff, 0 3px #5ca6a1;'><h2>SUCESS </h2></div>";
     // resultMessage.innerHTML = 
@@ -326,7 +324,7 @@ function clickResultBtn(event) {
   } else {
     /* 오답 */
     resultMessage.innerHTML =
-      "<div style='padding: 10px 80px; border-radius:25px; background-color: #db4c4c; box-shadow: 3px 3px 3px 3px #9d3c3c;'><h2>FAIL</h2></div>";
+    "<div style='padding: 10px 80px; font-size: 30px; text-shadow: 4px 0 #ed3c37, 0 4px #e9e9e9, 7px 0 #eda1a1, 0 3px #dfdcb9;'><h2>FAIL</h2></div>";
   }
 }
 

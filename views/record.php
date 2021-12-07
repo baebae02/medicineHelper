@@ -43,6 +43,7 @@
                             echo "<p>🤮 효능: ".$row['efcyQesitm']."</p>";
                             echo "<p>🥴 복용법: ".$row['useMethodQesitm']."</p>";
                             echo $row['alarm'] === '1' ? "<p>⏰ 알람여부: ⭕️ </p>" : "<p>⏰ 알람여부: ❌</p>";
+                            echo "<p> 복용시점:".$row['created_at']."</p>";
                             echo "</div>";
                         }
                     }else {
@@ -116,11 +117,13 @@
 }
 
 .add {
-  margin: 20px;
+  margin: 10px;
+  width: 200px;
+  font-size: 30px;
   border: none;
+  height: 100px;
   padding: 20px;
   border-radius: 25px;
-  font-size: 15px;
   background-color: white;
   box-shadow: 3px 3px 3px 3px #e7e7e7;
 }

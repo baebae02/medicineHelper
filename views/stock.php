@@ -90,7 +90,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="stock.css?ver=4" rel="stylesheet" />
+  <link href="stock.css?ver=6" rel="stylesheet" />
   <script type="text/javascript" src="./script.js"></script>
   <!-- <script type="text/javascript" src="./stock.js"></script> -->
   <title>Stock</title>
@@ -187,7 +187,7 @@
 <style>
 #stock-container {
   padding: 20px;
-  background-image: url('../assets/stock.jpeg');
+  background-image: url("../assets/stockImage/stock5.png");
   position: relative;
 }
 

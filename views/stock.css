@@ -35,10 +35,10 @@
 .text {
   text-align: center;
 }
-#stock-container {
+/* #stock-container {
   padding: 20px;
-  background-image: url("../assets/stock.jpeg");
-}
+  background-image: url("../assets/stockImage/stock1.jpg");
+} */
 #stock-list {
   display: grid;
   grid-template-columns: 1fr 1fr;

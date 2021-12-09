@@ -24,7 +24,6 @@
             if (mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
                     if (strpos($row['itemName'], $searchItem)){
-                        echo $searchItem . "FIND1"; 
                         echo "<h1>".$searchItem . "에 대한 결과는? </h1>";
                         echo "<p>💊 제품명:". $row["itemName"]. "</p>";
                         echo "<p>🏢 업체명:". $row["entpName"]. "</p>";

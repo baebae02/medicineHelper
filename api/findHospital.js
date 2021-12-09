@@ -81,6 +81,7 @@ function findHospital() {
       }
     },
     error: function (request, status, error) {
+      console.log(status, error);
       alert("Ajax 요청 실패");
     },
   });
